@@ -53,7 +53,7 @@ function elkmipo_add_settings_section( $sections ) {
 
 add_filter( 'woocommerce_get_settings_products', 'elkmipo_settings_section', 10, 2 );
 function elkmipo_settings_section( $settings, $current_section ) {
-	if ( $current_section == 'elkcmipo' ) {
+	if ( $current_section == 'elkmipo' ) {
 		$elkmipo_settings = array();
 
 		$elkmipo_settings[] = array(
