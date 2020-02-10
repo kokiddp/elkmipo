@@ -1,6 +1,6 @@
 === ELK Minimum Items per Order for WooCommerce ===
 Contributors: elklab
-Tags: ecommerce, e-commerce, shop, item, items, product, products, limit, minumum, min
+Tags: ecommerce, e-commerce, shop, item, items, product, products, limit, minimum, min
 Requires at least: 4.6
 Tested up to: 5.3.2
 Requires PHP: 7.1
@@ -15,13 +15,22 @@ This simple plugin allows to set a minimum number of items per order.
 If the number of items in the cart is less than the set value
 an error message will be shown and the checkout will be blocked.
 
+This plugin features Italian and French translations.
+Spanish and German translations will be added in next version.
+
+Configuration options are available in
+WooCommerce->Settings->Products->ELK Minimum Items per Order
+
 == Installation ==
  
-1. Upload `plugin-name.php` to the `/wp-content/plugins/` directory
+1. Install from Plugin page or extract 'elkmipo.zip' in the '/wp-content/plugins/' directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Configure it in WooCommerce->Settings->Products->ELK Minimum Items per Order
 
 == Changelog ==
  
+= 1.0.2 =
+* Add "Back to store" link in error message
+
 = 1.0.0 =
 * Initial version

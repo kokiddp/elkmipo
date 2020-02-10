@@ -4,7 +4,7 @@
  * Plugin Name:				ELK Minimum Items per Order for WooCommerce
  * Plugin URI:				https://github.com/kokiddp/elkmipo
  * Description:				This simple plugin allows to set a minimum number of items per order
- * Version:					1.0.0
+ * Version:					1.0.2
  * Requires at least:		4.6
  * Tested up to:			5.3.2
  * Requires PHP:			7.1
@@ -90,10 +90,12 @@ function elkmipo_minimum_order_amount() {
 		if ( $cart_count < $minimum ) {
 			wc_add_notice( 
 				sprintf(
-					__( 'In your cart there are %s items — you must have at least %s items in your cart to place your order' , 'elkmipo' ), 
+					__( 'In your cart there are %1$s items — you must have at least %2$s items in your cart to place your order. <a href="%3$s">Back to Store</a>' , 'elkmipo' ), 
 					$cart_count, 
-					$minimum
-				), 'error' 
+					$minimum,
+					get_permalink( woocommerce_get_page_id( 'shop' ) )
+				),
+				'error' 
 			);
 		}
 	}
