@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ELK Minimum Items per Order for WooCommerce\n"
-"POT-Creation-Date: 2020-02-10 18:44+0100\n"
-"PO-Revision-Date: 2020-02-10 18:44+0100\n"
+"POT-Creation-Date: 2020-05-14 17:20+0200\n"
+"PO-Revision-Date: 2020-05-14 17:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: it_IT\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.3\n"
+"X-Generator: Poedit 2.3.1\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: elkmipo.php\n"
@@ -44,10 +44,22 @@ msgid "Minimum items"
 msgstr "Articoli minimi"
 
 #: elkmipo.php:68
-msgid "Insert the minimum number of items per order"
-msgstr "Inserisci il numero minimo di articoli per ordine"
+msgid "Insert the minimum number of items per order. Leave blank to disable"
+msgstr ""
+"Inserisci il numero minimo di articoli per ordine. Lascia in bianco per "
+"disabilitare"
 
-#: elkmipo.php:93
+#: elkmipo.php:74
+msgid "Multiple of"
+msgstr "Multipli di"
+
+#: elkmipo.php:75
+msgid "Insert the number the items must be multiple of. Leave blank to disable"
+msgstr ""
+"Inserisci il numero del quale gli articoli devono essere multiplo per "
+"ordine. Lascia in bianco per disabilitare"
+
+#: elkmipo.php:101
 #, php-format
 msgid ""
 "In your cart there are %1$s items — you must have at least %2$s items in "
@@ -56,6 +68,16 @@ msgstr ""
 "Nel tuo carrello ci sono %1$s articoli - devi avere almeno %2$s articoli nel "
 "tuo carrello per effettuare il tuo ordine. <a href=\"%3$s\">Torna al "
 "negozio</a>"
+
+#: elkmipo.php:112
+#, php-format
+msgid ""
+"In your cart there are %1$s items — you must have a multiple of %2$s items "
+"in your cart to place your order. <a href=\"%3$s\">Back to Store</a>"
+msgstr ""
+"Nel tuo carrello ci sono %1$s articoli - devi avere un numero di articoli "
+"multiplo di %2$s nel tuo carrello per effettuare il tuo ordine. <a href="
+"\"%3$s\">Torna al negozio</a>"
 
 #. Plugin Name of the plugin/theme
 msgid "ELK Minimum Items per Order for WooCommerce"

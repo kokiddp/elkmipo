@@ -4,12 +4,12 @@
  * Plugin Name:				ELK Minimum Items per Order for WooCommerce
  * Plugin URI:				https://github.com/kokiddp/elkmipo
  * Description:				This simple plugin allows to set a minimum number of items per order
- * Version:					1.0.2
+ * Version:					1.1.0
  * Requires at least:		4.6
- * Tested up to:			5.3.2
+ * Tested up to:			5.4.1
  * Requires PHP:			7.1
  * WC requires at least:	3.0.2
- * WC tested up to:			3.9.1
+ * WC tested up to:			4.1.0
  * Author:					ELK-Lab
  * Author URI:				https://www.elk-lab.com
  * License:					GPL-2.0+
@@ -65,8 +65,15 @@ function elkmipo_settings_section( $settings, $current_section ) {
 
 		$elkmipo_settings[] = array(
 			'name'     => __( 'Minimum items', 'elkmipo' ),
-			'desc_tip' => __( 'Insert the minimum number of items per order', 'elkmipo' ),
+			'desc_tip' => __( 'Insert the minimum number of items per order. Leave blank to disable', 'elkmipo' ),
 			'id'       => 'elkmipo_min_items',
+			'type'     => 'number'
+		);
+
+		$elkmipo_settings[] = array(
+			'name'     => __( 'Multiple of', 'elkmipo' ),
+			'desc_tip' => __( 'Insert the number the items must be multiple of. Leave blank to disable', 'elkmipo' ),
+			'id'       => 'elkmipo_multiple',
 			'type'     => 'number'
 		);
 		
@@ -85,12 +92,24 @@ add_action( 'woocommerce_check_cart_items', 'elkmipo_minimum_order_amount' );
 function elkmipo_minimum_order_amount() {
 	if( is_cart() || is_checkout() ) {
 		$minimum = intval( get_option( 'elkmipo_min_items' ) != null ? get_option( 'elkmipo_min_items' ) : 1 );
+		$multiple = intval( get_option( 'elkmipo_multiple' ) != null ? get_option( 'elkmipo_multiple' ) : 1 );
 		$cart_count = intval( WC()->cart->get_cart_contents_count() );
 
 		if ( $cart_count < $minimum ) {
 			wc_add_notice( 
 				sprintf(
 					__( 'In your cart there are %1$s items — you must have at least %2$s items in your cart to place your order. <a href="%3$s">Back to Store</a>' , 'elkmipo' ), 
+					$cart_count, 
+					$minimum,
+					get_permalink( woocommerce_get_page_id( 'shop' ) )
+				),
+				'error' 
+			);
+		}
+		if ( ( $cart_count % $multiple ) > 0 ) {
+			wc_add_notice( 
+				sprintf(
+					__( 'In your cart there are %1$s items — you must have a multiple of %2$s items in your cart to place your order. <a href="%3$s">Back to Store</a>' , 'elkmipo' ), 
 					$cart_count, 
 					$minimum,
 					get_permalink( woocommerce_get_page_id( 'shop' ) )

@@ -29,6 +29,9 @@ WooCommerce->Settings->Products->ELK Minimum Items per Order
 
 == Changelog ==
  
+= 1.1.0 =
+* Add feature: add setting to limit items to multiple of a number
+
 = 1.0.2 =
 * Add "Back to store" link in error message
 
